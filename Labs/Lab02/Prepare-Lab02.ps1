@@ -1,5 +1,7 @@
-﻿$dirWindowsServerImage = "D:\ws2016\iso"
-$dirVM = "D:\VM"
+﻿$dirWindowsServerImage = "C:\iso"
+$dirVM = "C:\VM"
+
+New-Item -Path "c:\" -Name "VM" -ItemType "directory" -Confirm:$false -ErrorAction SilentlyContinue
 
 $vhdPath = "$dirVM\Win2016Base.vhdx"
 $imageName = "Windows Server 2016 Standard (Desktop Experience)"
@@ -57,7 +59,7 @@ Copy-Item -Path $vhdPath -Destination "$dirVM\$vm1.vhdx"
 
 $d = Mount-VHD -Path "$dirVM\$vm1.vhdx" -Passthru
 $dl = $d | Get-Partition | select -Last 1 -ExpandProperty DriveLetter
-Copy-Item D:\ws2016\unattend-dc.xml "$($dl):\unattend.xml"
+Copy-Item C:\Labs\Lab-2\unattend-dc.xml "$($dl):\unattend.xml"
 $d | Dismount-VHD
 
 New-VM -Name $vm1 -VHDPath "$dirVM\$vm1.vhdx" -Generation 2 -SwitchName $SwitchName
