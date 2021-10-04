@@ -146,3 +146,5 @@ Invoke-Command -Session $session -ScriptBlock {
     $net | Enable-NetAdapter -Confirm:$false
 }
 $session | Remove-PSSession
+
+Write-Host "Setup completed"
