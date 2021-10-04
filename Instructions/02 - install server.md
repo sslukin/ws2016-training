@@ -13,7 +13,7 @@ After completing this lab, you will be able to:
 ## Lab Setup
 For this lab, you will use the available virtual machine environment. Before you begin the lab, complete the following steps:
 1. On the host computer, start **Hyper‑V Manager**.
-1. Download this reporsitory (https://github.com/sslukin/ws2016-training) by clicking green button **Code -> Download ZIP** to virtual machine and unzip into drive **C:**
+1. Download this reporsitory (https://github.com/sslukin/ws2016-training) by clicking green button **Code -> Download ZIP** to virtual machine and unzip **Lab** folder into drive **C:**
 1. Open PowerShell ISE as Administrator and open file **C:\Labs\Lab02\Prepare-Lab02.ps1**
 1. Select all with **CTRL+A**, right click on selected text and click **Run selection**.
 1. Wait approximately 10 minutes until you see a message **Setup completed**. 
