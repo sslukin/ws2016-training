@@ -74,6 +74,7 @@ $vm2 = "LON-SVR1"
 New-VHD -Path "$dirVM\$vm2.vhdx" -Dynamic -SizeBytes 30GB
 New-VM -Name "LON-SVR1" -VHDPath "$dirVM\$vm2.vhdx" -Generation 2 -SwitchName $SwitchName
 Set-VM -Name "LON-SVR1" -ProcessorCount 4 -StaticMemory -MemoryStartupBytes 4GB
+Add-VMDvdDrive -VMName $vm2
 
 Write-Host "Starting VM DC1"
 Start-VM -Name $vm1
