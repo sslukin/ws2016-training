@@ -2,7 +2,7 @@
 
 ## Welcome
 
-Instructions for labs are located in [Instructions](instructions) folder
+Instructions for labs are located in [Instructions](./instructions/) folder
 
 This training is a compilation of labs from Microsoft official trainings:
 1. https://docs.microsoft.com/en-us/learn/certifications/courses/20740
