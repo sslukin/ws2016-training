@@ -13,7 +13,7 @@ After completing this lab, you will be able to:
 ## Lab Setup
 For this lab, you will use the available virtual machine environment. Before you begin the lab, complete the following steps:
 1. On the host computer, start **PowerShell** as Administrator
-1. Execute the following script:
+1. Execute the following script to download important training files:
     ```powershell
     $url = "https://github.com/sslukin/ws2016-training/archive/refs/heads/main.zip"
     $zip = "c:\ws2016.zip"
@@ -23,9 +23,12 @@ For this lab, you will use the available virtual machine environment. Before you
     Copy-Item "$expand\Labs" -Destination c:\Labs -Recurse
     Remove-Item $zip, $expand -Confirm:$false -Force -Recurse
     ```
-1. Check drive **C**, there should be **Labs** folder
-1. On the host computer, start **Command Prompt (cmd.exe) -> Run as Administrator**
-1. Execute the following command:
+1. Execute the following script to diable Windows updates:
+    ```powershell
+    Stop-Service wuauserv
+    Set-Service wuauserv –startup disabled
+    ```
+1. Execute the following script to install virtual machine with domain controller for your labs:
     ```powershell
     powershell.exe -ExecutionPolicy Bypass -File "C:\Labs\Lab02\Prepare-Lab02.ps1"
     ```
@@ -47,10 +50,15 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Install Windows Server 2016 Datacenter on LON-SVR1
 1. In the **LON-SVR1** Virtual Machine Connection window, click the **Start** icon.
-2. When **LON-SVR1** starts Windows Setup, install **Windows Server 2016 Core** by using the **Windows Server 2016 Datacenter** option. 
-3. Use the **Custom** option rather than the **Update** option, accepting all other default values and license agreements.
-4. Use **Pa55w.rd** for the Administrator’s password.
-5. Verify that when the installation is complete, the **Command Prompt** window on **LON-SVR1** opens with a **C:\Users\Administrator> prompt**.
+1. When **LON-SVR1** starts Windows Setup, install **Windows Server 2016 Core** by using the **Windows Server 2016 Datacenter** option.
+1. Use the following product key when propmpted:  
+    **CB7KF-BWN84-R7R2Y-793K2-8XDDG**  
+      
+    > For more information read this article  
+    https://docs.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys
+1. Use the **Custom** option rather than the **Update** option, accepting all other default values and license agreements.
+1. Use **Pa55w.rd** for the Administrator’s password.
+1. Verify that when the installation is complete, the **Command Prompt** window on **LON-SVR1** opens with a **C:\Users\Administrator> prompt**.
 
 > Results: After completing this exercise, you will have successfully installed the Windows Server 2016 Core operating system on **LON-SVR1**.
  
@@ -71,7 +79,7 @@ The main tasks for this exercise are as follows:
         - Address: **172.16.0.26**
         - Subnet Mask: **255.255.0.0**
         - Default Gateway: **172.16.0.1**
-        - Preferred DNS Server: **172.16.0.10**
+        - Preferred DNS Server: **172.16.0.01**
     - Join the **Adatum.com** domain and use **Adatum\administrator** credentials.
     - Rename the computer **LON-SVR1** and use **Adatum\Administrator** credentials.
     - Restart the computer.
@@ -125,7 +133,7 @@ The main tasks for this exercise are as follows:
 5. Set the **LON-SVR1** DNS server address, replacing the **X** with the actual interface index number from **step 4**:
 
     ```powershell
-    Set-DnsClientServerAddress -InterfaceIndex X -ServerAddresses ("172.16.0.26", "172.16.0.10")
+    Set-DnsClientServerAddress -InterfaceIndex X -ServerAddresses ("172.16.0.26", "172.16.0.01")
     ```
 6. Verify the results. Use the **PowerShell** command from **Step 4**.
 
