@@ -17,6 +17,7 @@
     > Этот скрипт загружает файлы, необходимые для выполнения лабораторной работы  
 
     ```powershell
+    Remove-Item -Path c:\labs -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
     $url = "https://github.com/sslukin/ws2016-training/archive/refs/heads/main.zip"
     $zip = "c:\ws2016.zip"
     $expand = "C:\ws2016-training-main"
@@ -45,7 +46,7 @@
 1. Переключитесь обратно в **PowerShell**
 1. Вставьте следующий скрипт в окно консоли и нажмите клавишу **Enter**:  
     ```powershell
-    Remove-Item -Path c:\vm -Recurse -Force -Confirm:$false
+    Remove-Item -Path c:\vm -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue
     ```
 1. Откройте проводник Windows и убедитесь, что на диске **C** отсутствует директория **VM**
 1. Вставьте следующий скрипт в окно консоли и нажмите клавишу **Enter**: 

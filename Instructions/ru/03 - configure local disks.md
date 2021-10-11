@@ -1,4 +1,4 @@
-# Модуль 2 - Настройка дисков
+# Модуль 3 - Настройка дисков
 
 Продолжительность: 40 минут
 
@@ -15,18 +15,6 @@
 1. Нажмите на кнопку **Пуск/Start** в Windows.
 1. Начните печатать **PowerShell**
 1. Запустите **Windows PowerShell**
-1. Вставьте следующий скрипт в окно консоли и нажмите клавишу **Enter**:  
-    > Этот скрипт загружает файлы, необходимые для выполнения лабораторной работы  
-
-    ```powershell
-    $url = "https://github.com/sslukin/ws2016-training/archive/refs/heads/main.zip"
-    $zip = "c:\ws2016.zip"
-    $expand = "C:\ws2016-training-main"
-    Start-BitsTransfer -Source $url -Destination $zip -TransferType Download
-    Expand-Archive $zip -DestinationPath c:\
-    Copy-Item "$expand\Labs" -Destination c:\Labs -Recurse
-    Remove-Item $zip, $expand -Confirm:$false -Force -Recurse
-    ```  
 
 1. Вставьте следующий скрипт в окно консоли и нажмите клавишу **Enter**: 
      > Этот скрипт устанавливает виртуальную машину и подключает ее к домену Active Directory:  
@@ -90,7 +78,7 @@
 1. Создание тома с чередованием
  
 ### Шаг 1: Создание тома и форматирование ReFS
-1. На виртуальной машине **LON-SVR4** запустите **Windows PowerShell (Admin)**. 
+1. На виртуальной машине **LON-SVR3** запустите **Windows PowerShell (Admin)**. 
 1. Создайте новый том, отформатированный **ReFS**, используя все место на **Disk 1**. Используйте следующие команды Windows PowerShell: 
 
     - Выведите все доступные диски, которые еще не были инициализированы:
