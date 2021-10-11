@@ -67,14 +67,7 @@ $d | Dismount-VHD
 
 Write-Host "Creating new VM for DC1"
 New-VM -Name $vm1 -VHDPath "$dirVM\$vm1.vhdx" -Generation 2 -SwitchName $SwitchName
-Set-VM -Name $vm1 -ProcessorCount 4 -StaticMemory -MemoryStartupBytes 4GB
-
-Write-Host "Creating new VM for SVR1"
-$vm2 = "LON-SVR1"
-New-VHD -Path "$dirVM\$vm2.vhdx" -Dynamic -SizeBytes 30GB
-New-VM -Name "LON-SVR1" -VHDPath "$dirVM\$vm2.vhdx" -Generation 2 -SwitchName $SwitchName
-Set-VM -Name "LON-SVR1" -ProcessorCount 4 -StaticMemory -MemoryStartupBytes 4GB
-Add-VMDvdDrive -VMName $vm2
+Set-VM -Name $vm1 -ProcessorCount 4 -StaticMemory -MemoryStartupBytes 2GB
 
 Write-Host "Starting VM DC1"
 Start-VM -Name $vm1
@@ -159,4 +152,4 @@ Invoke-Command -Session $session -ScriptBlock {
 }
 $session | Remove-PSSession
 
-Write-Host "Setup completed"
+Write-Host "Setup completed" -ForegroundColor Green
