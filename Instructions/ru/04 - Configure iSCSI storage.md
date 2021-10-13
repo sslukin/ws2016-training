@@ -1,6 +1,6 @@
 # Модуль 4 - Подключение дисков по сети и сетевые папки
 
-Продолжительность: 60 минут
+Продолжительность: 90 минут
 
 ## Подготовка к лабораторной работе
 Для выполнения лабораторных работ вы создадите виртуальные сети для имеющихся машин при помощи прилагающихся скриптов PowerShell. Для этого выполните следующие шаги:
@@ -213,13 +213,13 @@
 7. In the Add Permissions window, click All Machines.
 8. In the Share permissions box, select Read / Write, and then click Add.
 9. On the Specify the share permissions page, click Next.
-10.   On the Specify permissions to control access page, click Next.
-11.   On the Confirm selections page, click Create.
-12.   On the View results page, click Close.
+10. On the Specify permissions to control access page, click Next.
+11. On the Confirm selections page, click Create.
+12. On the View results page, click Close.
 	
 ### Шаг 4: Использование Windows PowerShell для просмотра информации об общих папках
 1. On LON-DC1, on the taskbar, click File Explorer.
-2. In File Explorer, in the address bar, type \\LON-SVR2\Data, and then press Enter.
+2. In File Explorer, in the address bar, type `\\LON-SVR2\Data`, and then press Enter.
 3. Click the Home tab, click New item, and then click Text Document.
 4. Type NewFile, and then press Enter to rename the document.
 5. Double-click NewFile.txt to open it in Notepad.
@@ -242,28 +242,28 @@
 1. Leave the Windows PowerShell prompt open for the next task.
 	
 ### Шаг 5: Отключение устаревшей версии протокола SMB1
-1. On LON-SVR2, at the Windows PowerShell prompt, type the following command, and then press Enter:
+1. На **LON-SVR2** в **Windows PowerShell** введите следующую команду и нажмите **Enter**:
     ```powershell
     Set-SmbServerConfiguration -AuditSmb1Access $true
     ```    
-2. Type Y to confirm, and then press Enter.
-3. Type the following command, and then press Enter:
+2. Укажите **Y** для подтверждения и затем нажмите **Enter**
+3. Введите следующую команду и нажмите Enter:
     ```powershell
     Get-SmbServerConfiguration | FL enable*
     ```    
-4. Type the following command, and then press Enter:
+4. Введите следующую команду и нажмите **Enter**:
     ```powershell
     Set-SmbServerConfiguration -EnableSMB1Protocol $false
     ```    
-5. Type Y to confirm, and then press Enter.
-6. Type the following command, and then press Enter:
+5. Укажите **Y** для подтверждения и затем нажмите **Enter**
+6. Введите следующую команду и нажмите **Enter**:
     ```powershell
     Get-WindowsFeature *SMB*
     ```    
-7. Type the following command, and then press Enter:
+7. Введите следующую команду и нажмите **Enter**:
     ```powershell
     Remove-WindowsFeature FS-SMB1
     ```    
-8. Close the Windows PowerShell prompt.
+8. Закройте **Windows PowerShell**
 	
 
