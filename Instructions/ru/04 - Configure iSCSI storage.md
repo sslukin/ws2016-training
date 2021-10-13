@@ -61,7 +61,8 @@
 1. В **Server Manager**, в **File and Storage Services**, выберите **iSCSI**.
 1. В правом верхнем углу нажмите Tasks
 1. Выберите **New iSCSI Virtual Disk**
-1. Выберите диск M
+1. Выберите диск **M**
+1. Нажмите кнопку **Next >**
 1. Укажите **Name**: **iSCSIDisk1**
 1. Нажмите кнопку **Next >**
 1. Укажите **Disk size**: **5 GB**
@@ -195,7 +196,7 @@
 1. В **New Share Wizard** на странице **Select the profile** в **File share profile** нажмите **SMB Share – Quick** и затем **Next**
 1. Выберите **LON-SVR2**, выберите **Select by volume**, выберите **J:**, нажмите кнопку **Next**
 1. Укажите **Share name** - **Data**, нажмите кнопку **Next**
-1. Выберите Enable access-based enumeration check box, and then click Next.
+1. Выберите опцию **Enable access-based enumeration**, нажмите кнопку **Next**
 1. Нажмите кнопку **Customize permissions**
 1. In the Advanced Security Settings for Data window, on the Permissions tab, нажмите кнопку Add.
 1. In the Permission Entry for Data window, click Select a principal, type Domain Users, and then click OK.
