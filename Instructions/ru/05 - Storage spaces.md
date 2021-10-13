@@ -190,8 +190,15 @@ Note: Notice that the Health Status indicates a warning. The Operational Status 
     ```powershell
     New-StoragePool -FriendlyName "TieredStoragePool" -StorageSubsystemFriendlyName "Windows Storage*" -PhysicalDisks $canpool
     ```
-3. Open File Explorer, and then browse to D:\Labfiles\Mod04.
-4. Right-click mod4.ps1, click Run with PowerShell, and press Y if prompted. This configures the disk names for the next part of the exercise.
+3. At the Windows PowerShell command prompt, type the following command, and then press Enter:
+    > This configures the disk names for the next part of the exercise.
+    ```powershell
+    $i = 1
+    $disks = Get-StoragePool -FriendlyName TieredStoragePool | Get-PhysicalDisk
+    Foreach ($disk in $disks)
+        {Get-PhysicalDisk -UniqueId $disk.UniqueID | Set-PhysicalDisk -NewFriendlyName (“PhysicalDisk$i”)
+        $i++}
+    ```
 
 ### Шаг 3: View the media types
 1. On LON-SVR4, at the Windows PowerShell command prompt, type the following command, and then press Enter:

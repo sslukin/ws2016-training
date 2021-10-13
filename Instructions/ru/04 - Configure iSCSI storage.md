@@ -237,23 +237,33 @@
     ```
     
 
-> Note: There are two entries for Adatum\Administrator. File Explorer creates one, and Notepad creates the other. If NewFile.txt is not included, it is because the file connection is maintained only for brief periods when you open the file initially or save it. If you do not see two entries, switch to LON-DC1, close Notepad, and then double-click NewFile.txt. Then, on LON-SVR2, repeat step 14.
+> Note: There are two entries for Adatum\Administrator. File Explorer creates one, and Notepad creates the other. If NewFile.txt is not included, it is because the file connection is maintained only for brief periods when you open the file initially or save it. If you do not see two entries, switch to LON-DC1, close Notepad, and then double-click NewFile.txt. Then, on LON-SVR2, run the same PowerShell commands.
 	
-15. Leave the Windows PowerShell prompt open for the next task.
+1. Leave the Windows PowerShell prompt open for the next task.
 	
 ### Шаг 5: Отключение устаревшей версии протокола SMB1
 1. On LON-SVR2, at the Windows PowerShell prompt, type the following command, and then press Enter:
+    ```powershell
     Set-SmbServerConfiguration -AuditSmb1Access $true
+    ```    
 2. Type Y to confirm, and then press Enter.
 3. Type the following command, and then press Enter:
+    ```powershell
     Get-SmbServerConfiguration | FL enable*
+    ```    
 4. Type the following command, and then press Enter:
+    ```powershell
     Set-SmbServerConfiguration -EnableSMB1Protocol $false
+    ```    
 5. Type Y to confirm, and then press Enter.
 6. Type the following command, and then press Enter:
+    ```powershell
     Get-WindowsFeature *SMB*
+    ```    
 7. Type the following command, and then press Enter:
+    ```powershell
     Remove-WindowsFeature FS-SMB1
+    ```    
 8. Close the Windows PowerShell prompt.
 	
 
