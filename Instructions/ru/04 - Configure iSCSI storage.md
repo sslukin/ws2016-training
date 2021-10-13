@@ -188,9 +188,9 @@
 1. Нажмите кнопку **Close**
 
 ### Шаг 2: Создание SMB share на основе хранилища iSCSI
-1. On LON-SVR2, in Server Manager, in the navigation pane, click File and Storage Services, and then click Shares.
-1. In the SHARES area, click TASKS, and then click New Share.
-1. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click SMB Share – Quick, and then click Next.
+1. На **LON-SVR2** в **Server Manager** в меню слева выберите **File and Storage Services** и затем **Shares**
+1. В **SHARES** нажмите **TASKS** и выберите **New Share**
+1. В **New Share Wizard** на странице **Select the profile** в **File share profile** нажмите **SMB Share – Quick** и затем **Next**
 1. On the Select the server and path for this share page, select LON-SVR2, click Select by volume, click J:, and then click Next.
 1. On the Specify share name page, in the Share name box, type Data, and then click Next.
 1. On the Configure share settings page, select the Enable access-based enumeration check box, and then click Next.
@@ -221,9 +221,9 @@
 1. На **LON-DC1** откройте **File Explorer**
 2. В адресной строке **File Explorer** введите `\\LON-SVR2\Data` и нажмите **Enter**
 3. Создайте новый текстовый файл и переименуйте его в `NewFile.txt`
-5. Откройте NewFile.txt в Notepad
-6. Оставьте Notepad открытым
-7. На LON-SVR2 запустите Windows PowerShell (Admin)
+5. Откройте `NewFile.txt` в **Notepad**
+6. Оставьте **Notepad** открытым
+7. На **LON-SVR2** запустите **Windows PowerShell (Admin)**
 8. На **LON-SVR2** в **Windows PowerShell** введите следующие команды и нажмите **Enter**:
     ```powershell
     Get-NfsShare
@@ -235,7 +235,7 @@
     Get-SmbOpenFile
     ```
 
-> Внимание: Имеются 2 строки для Adatum\Administrator. Они создаются программами File Explorer и Notepad. Если NewFile.txt не включен, то только потому, что запись проявляется короткое время при сохранении. Если вы не видите 2 записи, то на LON-DC1 закройте Notepad и откройте NewFile.txt. Затем на LON-SVR2 выполните те же PowerShell команды.
+> Внимание: Отображаются 2 строки для **Adatum\Administrator**. Они создаются программами **File Explorer** и **Notepad**. Если `NewFile.txt` не виден, то только потому, что запись проявляется короткое время при сохранении. Если вы не видите 2 записи, то на **LON-DC1** закройте **Notepad** и откройте `NewFile.txt`. Затем на **LON-SVR2** выполните те же **PowerShell** команды.
 	
 ### Шаг 5: Отключение устаревшей версии протокола SMB1
 1. На **LON-SVR2** в **Windows PowerShell** введите следующую команду и нажмите **Enter**:
@@ -263,3 +263,4 @@
 8. Закройте **Windows PowerShell**
 	
 
+> Результат: Вы создали 2 диска на удаленном сервере, подключили их через 2 разные сети к другому серверу c MPIO, а затем создали общие сетевые папки, используя протоколы SMB, NFS. В конце вы отключили старую уязвимую версию протокола SMB1.
