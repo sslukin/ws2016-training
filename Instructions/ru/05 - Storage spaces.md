@@ -102,30 +102,31 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 
 > Внимание: Если опция **three-way resiliency** недоступна, переходите к следующему шагу.
 
-1. Выберите Thin, затем нажмите кнопку Next.
-1. On the Specify the size of the virtual disk page, in the Specify size text box, type 10, затем нажмите кнопку Next.
-1. On the Confirm selections page, click Create.
-1. On the View results page, wait until the task completes. 
-1. Ensure that the Create a volume when this wizard closes check box is selected, затем нажмите кнопку Close.
-1. In the New Volume Wizard window, on the Before you begin page, click Next.
-1. On the Select the server and disk page, in the Disk pane, click the Mirrored Disk virtual disk, затем нажмите кнопку Next.
-1. On the Specify the size of the volume page, click Next to confirm the default selection.
-1. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that H is selected, затем нажмите кнопку Next.
-1. On the Select file system settings page, in the File system drop-down list, click ReFS, in the Volume label text box, type Mirrored Volume, затем нажмите кнопку Next.
-1. On the Confirm selections page, click Create. 
-1. On the Completion page, wait until the creation completes, затем нажмите кнопку Close.
+1. Выберите **Thin**, затем нажмите кнопку **Next**
+1. Укажите размер диск **10** Gb, затем нажмите кнопку **Next**
+1. Нажмите кнопку **Create**
+1. Дождитесь завершения опепации
+1. Отметьте опцию **Create a volume when this wizard closes**, затем нажмите кнопку **Close**
+1. Нажмите кнопку **Next**
+1. На панеле **Disk** нажмите **Mirrored Disk** virtual disk, затем нажмите кнопку **Next**
+1. Нажмите кнопку **Next**
+1. Выберите буквк диска **H**, затем нажмите кнопку **Next**
+1. Выберите файловую систему ReFS, введите **Volume label - Mirrored Volume**, затем нажмите кнопку **Next**
+1. Нажмите кнопку **Create**
+1. Дождитесь завершения опепации
+1. Нажмите кнопку **Close**
 
 ### Шаг 3: Копирование файлов на том и проверка их видимости в File Explorer
-1. On LON-SVR4, click Start, on the Start screen, type command prompt, and then press Enter.
-2. When you receive the command prompt, type the following command, and then press Enter:
+1. На **LON-SVR4** нажмите кнопку **Start**, начните печатать `command prompt`, затем нажмите клавишу **Enter**
+1. Введите следующую команду и нажмите клавишу **Enter**
     ```powershell
     Copy C:\windows\system32\write.exe H:\
     ```
-1. Close Command Prompt.
-1. On the taskbar, click the File Explorer icon.
-1. In the File Explorer window, in the navigation pane, click Mirrored Volume (H:). 
-1. Verify that write.exe is visible in the file list.
-1. Close File Explorer.
+1. Закройте **Command Prompt**
+1. Откройте **File Explorer **
+1. В **File Explorer** в навигации слева выберите **Mirrored Volume (H:)**
+1. Проверьте, что файл `write.exe` виден в списке файлов
+1. Закройте **File Explorer**
 
 ### Шаг 4: Remove a physical drive to simulate drive failure
 1. On the host computer, open Hyper-V Manager.
