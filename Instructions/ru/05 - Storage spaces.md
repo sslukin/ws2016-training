@@ -3,7 +3,7 @@
 Продолжительность: 90 минут
 
 ## Подготовка к лабораторной работе
-Для выполнения этой лабораторной работы вы создадите виртуальные машины при помощи прилагающихся скриптов PowerShell. Для этого выполните следующие шаги:
+Для выполнения этой лабораторной работы вы создадите виртуальные машины при помощи прилагающихся скриптов PowerShell. Для этого выполните следующие шаги на машине **HOST**:
 1. Нажмите на кнопку **Пуск/Start** в Windows.
 1. Начните печатать **PowerShell**
 1. Запустите **Windows PowerShell**
@@ -80,38 +80,39 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 ## Задание 1: Creating a Storage Space
 ### Шаг 1: Create a storage pool from six disks that are attached to the server
 1. На **LON-SVR4** нажмите кнопку **Start**, запустите **Server Manager**
-2. В Server Manager в панели слева нажмите **File and Storage Services**, затем в панели **Servers** нажмите **Storage Pools**
-3. In the STORAGE POOLS pane, click TASKS, and then, in the TASKS drop-down list, click New Storage Pool.
-4. In the New Storage Pool Wizard, on the Before you begin page, click Next.
-5. On the Specify a storage pool name and subsystem page, in the Name text box, type StoragePool1, and then click Next.
-6. On the Select physical disks for the storage pool page, select the first six disks in the Physical disks list and then click Next.
-7. On the Confirm selections page, click Create.
-8. On the View results page, wait until the task completes, and then click Close.
+1. 
+1. В Server Manager в панели слева нажмите **File and Storage Services**, затем в панели **Servers** нажмите **Storage Pools**
+1. In the STORAGE POOLS pane, click TASKS, and then, in the TASKS drop-down list, click New Storage Pool.
+1. In the New Storage Pool Wizard, on the Before you begin page, click Next.
+1. On the Specify a storage pool name and subsystem page, in the Name text box, type StoragePool1, and then click Next.
+1. On the Select physical disks for the storage pool page, select the first six disks in the Physical disks list and then click Next.
+1. On the Confirm selections page, click Create.
+1. On the View results page, wait until the task completes, and then click Close.
 
 ### Шаг 2: Создание three-way mirrored virtual disk (требуется минимум 5 дисков)
 1. На **LON-SVR4** в **Server Manager** на панели **Storage Pools** нажмите на **StoragePool1**
-2. На панели **VIRTUAL DISKS** нажмите **TASKS** затем выберите **New Virtual Disk**
-3. В диалоговом окне выберите **StoragePool1** и нажмите кнопку **OK**
-4. Нажмите кнопку **Next**
-5. On the Specify the virtual disk name page, in the Name text box, type Mirrored Disk, and then click Next.
-6. On the Specify enclosure resiliency page, click Next.
-7. On the Select the storage layout page, in the Layout list, click Mirror, and then click Next.
-8. On the Configure the resiliency settings page, click Three-way mirror, and then click Next.
+1. На панели **VIRTUAL DISKS** нажмите **TASKS** затем выберите **New Virtual Disk**
+1. В диалоговом окне выберите **StoragePool1** и нажмите кнопку **OK**
+1. Нажмите кнопку **Next**
+1. On the Specify the virtual disk name page, in the Name text box, type Mirrored Disk, and then click Next.
+1. On the Specify enclosure resiliency page, click Next.
+1. On the Select the storage layout page, in the Layout list, click Mirror, and then click Next.
+1. On the Configure the resiliency settings page, click Three-way mirror, and then click Next.
 
 > Note: If the three-way resiliency setting is unavailable, proceed to the next step in the lab.
 
-9. On the Specify the provisioning type page, click Thin, and then click Next.
-10. On the Specify the size of the virtual disk page, in the Specify size text box, type 10, and then click Next.
-11. On the Confirm selections page, click Create.
-12. On the View results page, wait until the task completes. 
-13. Ensure that the Create a volume when this wizard closes check box is selected, and then click Close.
-14. In the New Volume Wizard window, on the Before you begin page, click Next.
-15. On the Select the server and disk page, in the Disk pane, click the Mirrored Disk virtual disk, and then click Next.
-16. On the Specify the size of the volume page, click Next to confirm the default selection.
-17. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that H is selected, and then click Next.
-18. On the Select file system settings page, in the File system drop-down list, click ReFS, in the Volume label text box, type Mirrored Volume, and then click Next.
-19. On the Confirm selections page, click Create. 
-20. On the Completion page, wait until the creation completes, and then click Close.
+1. On the Specify the provisioning type page, click Thin, and then click Next.
+1. On the Specify the size of the virtual disk page, in the Specify size text box, type 10, and then click Next.
+1. On the Confirm selections page, click Create.
+1. On the View results page, wait until the task completes. 
+1. Ensure that the Create a volume when this wizard closes check box is selected, and then click Close.
+1. In the New Volume Wizard window, on the Before you begin page, click Next.
+1. On the Select the server and disk page, in the Disk pane, click the Mirrored Disk virtual disk, and then click Next.
+1. On the Specify the size of the volume page, click Next to confirm the default selection.
+1. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that H is selected, and then click Next.
+1. On the Select file system settings page, in the File system drop-down list, click ReFS, in the Volume label text box, type Mirrored Volume, and then click Next.
+1. On the Confirm selections page, click Create. 
+1. On the Completion page, wait until the creation completes, and then click Close.
 
 ### Шаг 3: Copy a file to the volume, and verify it is visible in File Explorer
 1. On LON-SVR4, click Start, on the Start screen, type command prompt, and then press Enter.
@@ -127,33 +128,33 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 
 ### Шаг 4: Remove a physical drive to simulate drive failure
 1. On the host computer, open Hyper-V Manager.
-2. In the Virtual Machines pane, right-click LON-SVR4, and then click Settings.
-3. In Settings for LON-SVR4, in the Hardware pane, click the hard drive that begins with LON-SVR4-Disk1.
-4. In the Hard Drive pane, click Remove, click OK, and then click Continue.
+1. In the Virtual Machines pane, right-click LON-SVR4, and then click Settings.
+1. In Settings for LON-SVR4, in the Hardware pane, click the hard drive that begins with LON-SVR4-Disk1.
+1. In the Hard Drive pane, click Remove, click OK, and then click Continue.
 
 ### Шаг 5: Verify that the file is still available
 1. Switch to LON-SVR4.
-2. On the taskbar, click the File Explorer icon.
-3. In the File Explorer window, in the navigation pane, click Mirrored Volume (H:). 
-4. In the file list pane, verify that write.exe is still available.
-5. Close File Explorer.
-6. In Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
+1. On the taskbar, click the File Explorer icon.
+1. In the File Explorer window, in the navigation pane, click Mirrored Volume (H:). 
+1. In the file list pane, verify that write.exe is still available.
+1. Close File Explorer.
+1. In Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
 
 Note: Notice the warning that is visible next to Mirrored Disk.
 
-7. In the VIRTUAL DISK pane, right-click Mirrored Disk, and then click Properties.
-8. In the Mirrored Disk Properties dialog box, in the left pane, click Health. 
+1. In the VIRTUAL DISK pane, right-click Mirrored Disk, and then click Properties.
+1. In the Mirrored Disk Properties dialog box, in the left pane, click Health. 
 
-Note: Notice that the Health Status indicates a warning. The Operational Status should indicate one or more of the following: Incomplete, Unknown, or Degraded.
+> Note: Notice that the Health Status indicates a warning. The Operational Status should indicate one or more of the following: Incomplete, Unknown, or Degraded.
 
-9. In the Mirrored Disk Properties dialog box, click OK.
+1. In the Mirrored Disk Properties dialog box, click OK.
 
 ### Шаг 6: Add a new disk to the storage pool and remove the broken disk
 1. On LON-SVR4, in Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
-2. In the STORAGE POOLS pane, right-click StoragePool1, and then click Add Physical Disk.
-3. In the Add Physical Disk window, click the first disk in the list, and then click OK.
-4. Right-click Start, and then click Windows PowerShell (Admin).
-5. In Windows PowerShell, type the following command, and then press Enter:
+1. In the STORAGE POOLS pane, right-click StoragePool1, and then click Add Physical Disk.
+1. In the Add Physical Disk window, click the first disk in the list, and then click OK.
+1. Right-click Start, and then click Windows PowerShell (Admin).
+1. In Windows PowerShell, type the following command, and then press Enter:
     ```powershell
     Get-PhysicalDisk
     ```
@@ -176,37 +177,38 @@ Note: Notice that the Health Status indicates a warning. The Operational Status 
 ## Задание 2: Enabling and configuring storage tiering
 ### Шаг 1: Use the Get-PhysicalDisk cmdlet to view all available disks on the system
 1. On LON-SVR4, right-click Start, and then click Windows PowerShell (Admin).
-2. In Windows PowerShell, type the following command, and then press Enter:  
+1. In Windows PowerShell, type the following command, and then press Enter:  
     ```powershell
     Get-PhysicalDisk
     ```
   
-### Шаг 2: Create a new storage pool
-1. In the Windows PowerShell command prompt, type the following command, and then press Enter:
+### Шаг 2: Создание storage pool
+1. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
     ```powershell
     $canpool = Get-PhysicalDisk –CanPool $true
     ```
-2. At the Windows PowerShell command prompt, type the following command, and then press Enter:
+2. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
     ```powershell
     New-StoragePool -FriendlyName "TieredStoragePool" -StorageSubsystemFriendlyName "Windows Storage*" -PhysicalDisks $canpool
     ```
-3. At the Windows PowerShell command prompt, type the following command, and then press Enter:
-    > This configures the disk names for the next part of the exercise.
+3. В **Windows PowerShell** введите команды и нажмите клавишу **Enter**:
+    > Этот скрипт настраивает имена дисков для последующих шагов задания
     ```powershell
     $i = 1
     $disks = Get-StoragePool -FriendlyName TieredStoragePool | Get-PhysicalDisk
-    Foreach ($disk in $disks)
-        {Get-PhysicalDisk -UniqueId $disk.UniqueID | Set-PhysicalDisk -NewFriendlyName (“PhysicalDisk$i”)
-        $i++}
+    Foreach ($disk in $disks) {
+      Get-PhysicalDisk -UniqueId $disk.UniqueID | Set-PhysicalDisk -NewFriendlyName ("PhysicalDisk$i")
+      $i++
+    }
     ```
 
-### Шаг 3: View the media types
+### Шаг 3: Просмотр media types
 1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Get-StoragePool –FriendlyName TieredStoragePool | Get-PhysicalDisk | Select FriendlyName, MediaType, Usage, BusType
     ```
   
-### Шаг 4: Specify the media type for the sample disks and verify that the media type is changed
+### Шаг 4: Укажите media type для дисков и проверьте, что тип изменился
 1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Set-PhysicalDisk –FriendlyName PhysicalDisk1 –MediaType SSD
@@ -214,7 +216,7 @@ Note: Notice that the Health Status indicates a warning. The Operational Status 
     Get-PhysicalDisk | Select FriendlyName, MediaType, Usage, BusType
     ```
   
-### Шаг 5: Create pool-level storage tiers by using Windows PowerShell
+### Шаг 5: Создайте pool-level storage tiers при помощи Windows PowerShell
 1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     New-StorageTier –StoragePoolFriendlyName TieredStoragePool -FriendlyName HDD_Tier –MediaType HDD
