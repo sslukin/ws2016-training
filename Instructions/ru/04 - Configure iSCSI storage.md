@@ -218,14 +218,13 @@
 12. On the View results page, click Close.
 	
 ### Шаг 4: Использование Windows PowerShell для просмотра информации об общих папках
-1. On LON-DC1, on the taskbar, click File Explorer.
-2. In File Explorer, in the address bar, type `\\LON-SVR2\Data`, and then press Enter.
-3. Click the Home tab, click New item, and then click Text Document.
-4. Type NewFile, and then press Enter to rename the document.
-5. Double-click NewFile.txt to open it in Notepad.
-6. Leave Notepad open for later in the task.
-7. On LON-SVR2, right-click Start, and then click Windows PowerShell (Admin).
-8. At the Windows PowerShell prompt, type the following command, and then press Enter:
+1. На **LON-DC1** откройте **File Explorer**
+2. В адресной строке **File Explorer** введите `\\LON-SVR2\Data` и нажмите **Enter**
+3. Создайте новый текстовый файл и переименуйте его в `NewFile.txt`
+5. Откройте NewFile.txt в Notepad
+6. Оставьте Notepad открытым
+7. На LON-SVR2 запустите Windows PowerShell (Admin)
+8. На **LON-SVR2** в **Windows PowerShell** введите следующие команды и нажмите **Enter**:
     ```powershell
     Get-NfsShare
     Get-NfsShare LinuxData | FL *
@@ -235,11 +234,8 @@
     Get-SMBSession -ClientUserName Adatum\Administrator | FL *
     Get-SmbOpenFile
     ```
-    
 
-> Note: There are two entries for Adatum\Administrator. File Explorer creates one, and Notepad creates the other. If NewFile.txt is not included, it is because the file connection is maintained only for brief periods when you open the file initially or save it. If you do not see two entries, switch to LON-DC1, close Notepad, and then double-click NewFile.txt. Then, on LON-SVR2, run the same PowerShell commands.
-	
-1. Leave the Windows PowerShell prompt open for the next task.
+> Внимание: Имеются 2 строки для Adatum\Administrator. Они создаются программами File Explorer и Notepad. Если NewFile.txt не включен, то только потому, что запись проявляется короткое время при сохранении. Если вы не видите 2 записи, то на LON-DC1 закройте Notepad и откройте NewFile.txt. Затем на LON-SVR2 выполните те же PowerShell команды.
 	
 ### Шаг 5: Отключение устаревшей версии протокола SMB1
 1. На **LON-SVR2** в **Windows PowerShell** введите следующую команду и нажмите **Enter**:
