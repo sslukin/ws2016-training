@@ -82,39 +82,40 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 1. На **LON-SVR4** нажмите кнопку **Start**, запустите **Server Manager**
 1. 
 1. В Server Manager в панели слева нажмите **File and Storage Services**, затем в панели **Servers** нажмите **Storage Pools**
-1. In the STORAGE POOLS pane, click TASKS, and then, in the TASKS drop-down list, click New Storage Pool.
-1. In the New Storage Pool Wizard, on the Before you begin page, click Next.
-1. On the Specify a storage pool name and subsystem page, in the Name text box, type StoragePool1, and then click Next.
-1. On the Select physical disks for the storage pool page, select the first six disks in the Physical disks list and then click Next.
-1. On the Confirm selections page, click Create.
-1. On the View results page, wait until the task completes, and then click Close.
+1. В панеле **STORAGE POOLS** нажмите **TASKS**, затем в **TASKS** выберите **New Storage Pool**
+1. Нажмите кнопку **Next**
+1. Введите **Name - StoragePool1**, нажмите кнопку **Next**
+1. Выберите первые 6 дисков в списке **Physical disks** и нажмите кнопку **Next**
+1. Нажмите кнопку **Create**
+1. Подождите завершения опепации
+1. Нажмите кнопку **Close**
 
 ### Шаг 2: Создание three-way mirrored virtual disk (требуется минимум 5 дисков)
 1. На **LON-SVR4** в **Server Manager** на панели **Storage Pools** нажмите на **StoragePool1**
 1. На панели **VIRTUAL DISKS** нажмите **TASKS** затем выберите **New Virtual Disk**
 1. В диалоговом окне выберите **StoragePool1** и нажмите кнопку **OK**
 1. Нажмите кнопку **Next**
-1. On the Specify the virtual disk name page, in the Name text box, type Mirrored Disk, and then click Next.
-1. On the Specify enclosure resiliency page, click Next.
-1. On the Select the storage layout page, in the Layout list, click Mirror, and then click Next.
-1. On the Configure the resiliency settings page, click Three-way mirror, and then click Next.
+1. Введите **Name - Mirrored Disk**, нажмите кнопку **Next**
+1. Нажмите кнопку **Next**
+1. Нажмите кнопку **Mirror**, затем нажмите кнопку **Next**
+1. Выберите **Three-way mirror**, затем нажмите кнопку **Next**
 
-> Note: If the three-way resiliency setting is unavailable, proceed to the next step in the lab.
+> Внимание: Если опция **three-way resiliency** недоступна, переходите к следующему шагу.
 
-1. On the Specify the provisioning type page, click Thin, and then click Next.
-1. On the Specify the size of the virtual disk page, in the Specify size text box, type 10, and then click Next.
+1. Выберите Thin, затем нажмите кнопку Next.
+1. On the Specify the size of the virtual disk page, in the Specify size text box, type 10, затем нажмите кнопку Next.
 1. On the Confirm selections page, click Create.
 1. On the View results page, wait until the task completes. 
-1. Ensure that the Create a volume when this wizard closes check box is selected, and then click Close.
+1. Ensure that the Create a volume when this wizard closes check box is selected, затем нажмите кнопку Close.
 1. In the New Volume Wizard window, on the Before you begin page, click Next.
-1. On the Select the server and disk page, in the Disk pane, click the Mirrored Disk virtual disk, and then click Next.
+1. On the Select the server and disk page, in the Disk pane, click the Mirrored Disk virtual disk, затем нажмите кнопку Next.
 1. On the Specify the size of the volume page, click Next to confirm the default selection.
-1. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that H is selected, and then click Next.
-1. On the Select file system settings page, in the File system drop-down list, click ReFS, in the Volume label text box, type Mirrored Volume, and then click Next.
+1. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that H is selected, затем нажмите кнопку Next.
+1. On the Select file system settings page, in the File system drop-down list, click ReFS, in the Volume label text box, type Mirrored Volume, затем нажмите кнопку Next.
 1. On the Confirm selections page, click Create. 
-1. On the Completion page, wait until the creation completes, and then click Close.
+1. On the Completion page, wait until the creation completes, затем нажмите кнопку Close.
 
-### Шаг 3: Copy a file to the volume, and verify it is visible in File Explorer
+### Шаг 3: Копирование файлов на том и проверка их видимости в File Explorer
 1. On LON-SVR4, click Start, on the Start screen, type command prompt, and then press Enter.
 2. When you receive the command prompt, type the following command, and then press Enter:
     ```powershell
@@ -128,9 +129,9 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 
 ### Шаг 4: Remove a physical drive to simulate drive failure
 1. On the host computer, open Hyper-V Manager.
-1. In the Virtual Machines pane, right-click LON-SVR4, and then click Settings.
+1. In the Virtual Machines pane, right-click LON-SVR4, затем нажмите кнопку Settings.
 1. In Settings for LON-SVR4, in the Hardware pane, click the hard drive that begins with LON-SVR4-Disk1.
-1. In the Hard Drive pane, click Remove, click OK, and then click Continue.
+1. In the Hard Drive pane, click Remove, click OK, затем нажмите кнопку Continue.
 
 ### Шаг 5: Verify that the file is still available
 1. Switch to LON-SVR4.
@@ -142,7 +143,7 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 
 Note: Notice the warning that is visible next to Mirrored Disk.
 
-1. In the VIRTUAL DISK pane, right-click Mirrored Disk, and then click Properties.
+1. In the VIRTUAL DISK pane, right-click Mirrored Disk, затем нажмите кнопку Properties.
 1. In the Mirrored Disk Properties dialog box, in the left pane, click Health. 
 
 > Note: Notice that the Health Status indicates a warning. The Operational Status should indicate one or more of the following: Incomplete, Unknown, or Degraded.
@@ -151,9 +152,9 @@ Note: Notice the warning that is visible next to Mirrored Disk.
 
 ### Шаг 6: Add a new disk to the storage pool and remove the broken disk
 1. On LON-SVR4, in Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
-1. In the STORAGE POOLS pane, right-click StoragePool1, and then click Add Physical Disk.
-1. In the Add Physical Disk window, click the first disk in the list, and then click OK.
-1. Right-click Start, and then click Windows PowerShell (Admin).
+1. In the STORAGE POOLS pane, right-click StoragePool1, затем нажмите кнопку Add Physical Disk.
+1. In the Add Physical Disk window, click the first disk in the list, затем нажмите кнопку OK.
+1. Right-click Start, затем нажмите кнопку Windows PowerShell (Admin).
 1. In Windows PowerShell, type the following command, and then press Enter:
     ```powershell
     Get-PhysicalDisk
@@ -176,7 +177,7 @@ Note: Notice the warning that is visible next to Mirrored Disk.
 
 ## Задание 2: Enabling and configuring storage tiering
 ### Шаг 1: Use the Get-PhysicalDisk cmdlet to view all available disks on the system
-1. On LON-SVR4, right-click Start, and then click Windows PowerShell (Admin).
+1. On LON-SVR4, right-click Start, затем нажмите кнопку Windows PowerShell (Admin).
 1. In Windows PowerShell, type the following command, and then press Enter:  
     ```powershell
     Get-PhysicalDisk
@@ -224,35 +225,35 @@ Note: Notice the warning that is visible next to Mirrored Disk.
     New-StorageTier –StoragePoolFriendlyName TieredStoragePool -FriendlyName SSD_Tier –MediaType SSD
     ```
   
-### Шаг 6: Create a new virtual disk with storage tiering by using the New Virtual Disk Wizard
-1. On LON-SVR4, in Server Manager, in the Storage Pools pane, click Refresh, and then click TieredStoragePool.
-2. In the VIRTUAL DISKS pane, click TASKS, and then in the TASKS drop-down list, click New Virtual Disk.
-3. In the Select the storage pool dialog, click TieredStoragePool, and then click OK.
+### Шаг 6: Создайте новый виртуальный диск с уровнями хранения с использованием New Virtual Disk Wizard
+1. На **LON-SVR4** в **Server Manager** на панели **Storage Pools** нажмите кнопку **Refresh**, затем нажмите кнопку **TieredStoragePool**
+2. На панели **VIRTUAL DISKS** нажмите **TASKS**, затем в списке **TASKS** выберите **New Virtual Disk**
+3. In the Select the storage pool dialog, click TieredStoragePool, затем нажмите кнопку OK.
 4. In the New Virtual Disk Wizard, on the Before you begin page, click Next.
-5. On the Specify the virtual disk name page, in the Name text box, type TieredVirtDisk, select Create storage tiers on this virtual disk, and then click Next.
+5. On the Specify the virtual disk name page, in the Name text box, type TieredVirtDisk, select Create storage tiers on this virtual disk, затем нажмите кнопку Next.
 6. On the Specify enclosure resiliency page, click Next.
-7. On the Select the storage layout page, in both the Layout lists, click Simple, and then click Next.
+7. On the Select the storage layout page, in both the Layout lists, click Simple, затем нажмите кнопку Next.
 8. On the Specify the provisioning type page, click Next.
-9. On the Specify the size of the virtual disk page, in both the Specify size text boxes, type 2, clear the Enable read cache check box, and then click Next.
+9. On the Specify the size of the virtual disk page, in both the Specify size text boxes, type 2, clear the Enable read cache check box, затем нажмите кнопку Next.
 
 > Note: Based on your storage subsystem, the Enable read cache check box may not be present.
 
 10. On the Confirm selections page, click Create.
 11. On the View results page, wait until the task completes. 
-12. Ensure that Create a volume when this wizard closes is selected, and then click Close.
+12. Ensure that Create a volume when this wizard closes is selected, затем нажмите кнопку Close.
 13. In the New Volume Wizard, on the Before you begin page, click Next.
-14. On the Select the server and disk page, in the Disk pane, click the TieredVirtDisk virtual disk, and then click Next.
+14. On the Select the server and disk page, in the Disk pane, click the TieredVirtDisk virtual disk, затем нажмите кнопку Next.
 15. On the Specify the size of the volume page, click Next to confirm the default selection.
-16. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that R is selected, and then click Next.
-17. On the Select file system settings page, in the File system drop-down list, click ReFS. In the Volume label text box, type Tiered Volume, and then click Next.
+16. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that R is selected, затем нажмите кнопку Next.
+17. On the Select file system settings page, in the File system drop-down list, click ReFS. In the Volume label text box, type Tiered Volume, затем нажмите кнопку Next.
 
 > Note: If ReFS is not available from the file system drop-down menu, select NTFS.
 
 18. On the Confirm selections page, click Create. 
-19. On the Completion page, wait until the creation completes, and then click Close.
-20. In Server Manager, right-click the virtual disk you just created, and then click Properties.
+19. On the Completion page, wait until the creation completes, затем нажмите кнопку Close.
+20. In Server Manager, right-click the virtual disk you just created, затем нажмите кнопку Properties.
 21. In the TieredVirtDisk Properties window, on the General tab, observe the Storage tiers, Capacity, Allocated space, and Used pool space details. 
-22. Click the Health tab, and observe the Storage layout details, and then click OK.
+22. Click the Health tab, and observe the Storage layout details, затем нажмите кнопку OK.
 
 
 # Lab B: Implementing Data Deduplication
@@ -270,7 +271,7 @@ New: After you have tested the storage redundancy and performance options, you n
 5. On the Select destination server page, click Next.
 6. On the Select server roles page, in the Roles list, expand File and Storage Services (4 of 12 installed). 
 7. Expand File and iSCSI Services (3 of 11 installed).
-8. Select the Data Deduplication check box, and then click Next.
+8. Select the Data Deduplication check box, затем нажмите кнопку Next.
 9. On the Select features page, click Next.
 10. On the Confirm installation selections page, click Install. 
 11. When installation is complete, on the Installation progress page, click Close.
@@ -294,17 +295,17 @@ New: After you have tested the storage redundancy and performance options, you n
 ## Задание 2: Configuring Data Deduplication
 ### Шаг 1: Configure Data Deduplication
 1. On LON-SVR4, on the taskbar, click the File Explorer icon.
-2. In Server Manager, in the navigation pane, click File and Storage Services, and then click Disks.
+2. In Server Manager, in the navigation pane, click File and Storage Services, затем нажмите кнопку Disks.
 3. In the Disks pane, click 1.
 4. Beneath VOLUMES, click D.
-5. Right-click D, and then click Configure Data Deduplication.
+5. Right-click D, затем нажмите кнопку Configure Data Deduplication.
 6. In the Allfiles (D:\) Deduplication Settings dialog box, in the Data deduplication list, click General purpose file server.
 7. In the Deduplicate files older than (in days) text box, type 0.
 8. Click Set Deduplication Schedule.
-9. In the LON-SVR4 Deduplication Schedule dialog box, select the Enable throughput optimization check box, and then click OK.
+9. In the LON-SVR4 Deduplication Schedule dialog box, select the Enable throughput optimization check box, затем нажмите кнопку OK.
 10. In the Allfiles (D:\) Deduplication Settings dialog box, click Add. 
 11. In the Select Folder dialog box, expand Allfiles (D:), click shares.
-12. Click Select Folder, and then click OK.
+12. Click Select Folder, затем нажмите кнопку OK.
 
 ### Шаг 2: Configure optimization to run now and view the status
 1. On LON-SRV1, in the Windows PowerShell window, type the following command, and then press Enter:
@@ -329,7 +330,7 @@ New: After you have tested the storage redundancy and performance options, you n
 
 > Note: Observe the number of optimized files.
 
-8. In Server Manager, in the navigation pane, click File and Storage Services, and then click Disks.
+8. In Server Manager, in the navigation pane, click File and Storage Services, затем нажмите кнопку Disks.
 9. In the DISKS pane, click 1.
 10. Beneath VOLUMES, click D.
 11. Click Refresh and observe the values for Deduplication Rate and Deduplication Savings. 
