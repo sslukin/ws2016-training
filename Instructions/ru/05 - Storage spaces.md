@@ -32,7 +32,7 @@
     
     $d = Mount-VHD -Path "$dirVM\$vm.vhdx" -Passthru
     $dl = $d | Get-Partition | select -Last 1 -ExpandProperty DriveLetter
-    Copy-Item C:\Labs\Lab03\unattend-svr4.xml "$($dl):\unattend.xml"
+    Copy-Item C:\Labs\Lab04\unattend-svr4.xml "$($dl):\unattend.xml"
     $d | Dismount-VHD
     
     New-VM -Name $vm -VHDPath "$dirVM\$vm.vhdx" -Generation 2 -SwitchName $SwitchName
@@ -201,13 +201,13 @@ Note: Notice that the Health Status indicates a warning. The Operational Status 
     ```
 
 ### Шаг 3: View the media types
-1. On LON-SVR4, at the Windows PowerShell command prompt, type the following command, and then press Enter:
+1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Get-StoragePool –FriendlyName TieredStoragePool | Get-PhysicalDisk | Select FriendlyName, MediaType, Usage, BusType
     ```
   
 ### Шаг 4: Specify the media type for the sample disks and verify that the media type is changed
-1. On LON-SVR4, at the Windows PowerShell command prompt, type the following command, and then press Enter:
+1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Set-PhysicalDisk –FriendlyName PhysicalDisk1 –MediaType SSD
     Set-PhysicalDisk –FriendlyName PhysicalDisk2 –MediaType HDD
@@ -215,7 +215,7 @@ Note: Notice that the Health Status indicates a warning. The Operational Status 
     ```
   
 ### Шаг 5: Create pool-level storage tiers by using Windows PowerShell
-1. On LON-SVR4, at the Windows PowerShell command prompt, type the following command, and then press Enter:
+1. На **LON-SVR4** в **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     New-StorageTier –StoragePoolFriendlyName TieredStoragePool -FriendlyName HDD_Tier –MediaType HDD
 
