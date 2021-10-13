@@ -171,23 +171,39 @@
 25.   On the taskbar, click File Explorer, browse to This PC, and then verify that the SMBShares and NFSShares volumes are displayed.
 	
 ## Задание 3: Настройка инфраструктуры сетевых папок
-### Шаг 1: Создание SMB share на основе хранилища iSCSI
+
+### Шаг 1: Установка компонента iSCSI target
+1. Зайдите на виртуальную машину **LON-SVR3**
+1. Нажмите кнопку **Пуск**
+1. Запустите **Server Manager**
+1. Нажмите **Add roles and features** в центре экрана
+1. Нажмите кнопку **Next >** 3 раза
+1. Разверните узел **File and Storage Services**
+1. Разверните узел **File and iSCSI Services**
+1. Выберите опции **File server** и **Server for NFS**
+1. Нажмите кнопку **Add Features**
+1. Нажмите кнопку **Next >** 2 раза
+1. Нажмите кнопку **Install**
+1. Дождитесь окончания установки (примерно 1 минуту)
+1. Нажмите кнопку **Close**
+
+### Шаг 2: Создание SMB share на основе хранилища iSCSI
 1. On LON-SVR2, in Server Manager, in the navigation pane, click File and Storage Services, and then click Shares.
-2. In the SHARES area, click TASKS, and then click New Share.
-3. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click SMB Share – Quick, and then click Next.
-4. On the Select the server and path for this share page, select LON-SVR2, click Select by volume, click J:, and then click Next.
-5. On the Specify share name page, in the Share name box, type Data, and then click Next.
-6. On the Configure share settings page, select the Enable access-based enumeration check box, and then click Next.
-7. On the Specify permissions to control access page, click Customize permissions.
-8. In the Advanced Security Settings for Data window, on the Permissions tab, click Add.
-9. In the Permission Entry for Data window, click Select a principal, type Domain Users, and then click OK.
-10.   In the Basic permissions area, select the Modify check box, and then click OK.
-11.   In the Advanced Security Settings for Data window, click OK.
-12.   On the Specify permissions to control access page, click Next.
-13.   On the Confirm selections page, click Create.
-14.   When the creation of the share is complete, click Close.
+1. In the SHARES area, click TASKS, and then click New Share.
+1. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click SMB Share – Quick, and then click Next.
+1. On the Select the server and path for this share page, select LON-SVR2, click Select by volume, click J:, and then click Next.
+1. On the Specify share name page, in the Share name box, type Data, and then click Next.
+1. On the Configure share settings page, select the Enable access-based enumeration check box, and then click Next.
+1. On the Specify permissions to control access page, click Customize permissions.
+1. In the Advanced Security Settings for Data window, on the Permissions tab, click Add.
+1. In the Permission Entry for Data window, click Select a principal, type Domain Users, and then click OK.
+1.   In the Basic permissions area, select the Modify check box, and then click OK.
+1.   In the Advanced Security Settings for Data window, click OK.
+1.   On the Specify permissions to control access page, click Next.
+1.   On the Confirm selections page, click Create.
+1.   When the creation of the share is complete, click Close.
 	
-### Шаг 2: Создание NFS share на основе хранилища iSCSI
+### Шаг 3: Создание NFS share на основе хранилища iSCSI
 1. On LON-SVR2, in the SHARES area, click TASKS, and then click New Share.
 2. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click NFS Share – Quick, and then click Next.
 3. On the Select the server and path for this share page, click LON-SVR2, click Select by volume, click K:, and then click Next.
@@ -201,7 +217,7 @@
 11.   On the Confirm selections page, click Create.
 12.   On the View results page, click Close.
 	
-### Шаг 3: Использование Windows PowerShell для просмотра информации об общих папках
+### Шаг 4: Использование Windows PowerShell для просмотра информации об общих папках
 1. On LON-DC1, on the taskbar, click File Explorer.
 2. In File Explorer, in the address bar, type \\LON-SVR2\Data, and then press Enter.
 3. Click the Home tab, click New item, and then click Text Document.
@@ -225,7 +241,7 @@
 	
 15. Leave the Windows PowerShell prompt open for the next task.
 	
-### Шаг 4: Отключение устаревшей версии протокола SMB1
+### Шаг 5: Отключение устаревшей версии протокола SMB1
 1. On LON-SVR2, at the Windows PowerShell prompt, type the following command, and then press Enter:
     Set-SmbServerConfiguration -AuditSmb1Access $true
 2. Type Y to confirm, and then press Enter.
