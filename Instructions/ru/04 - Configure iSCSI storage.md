@@ -175,7 +175,7 @@
 1. On LON-SVR2, in Server Manager, in the navigation pane, click File and Storage Services, and then click Shares.
 2. In the SHARES area, click TASKS, and then click New Share.
 3. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click SMB Share – Quick, and then click Next.
-4. On the Select the server and path for this share page, select LON-SVR1, click Select by volume, click J:, and then click Next.
+4. On the Select the server and path for this share page, select LON-SVR2, click Select by volume, click J:, and then click Next.
 5. On the Specify share name page, in the Share name box, type Data, and then click Next.
 6. On the Configure share settings page, select the Enable access-based enumeration check box, and then click Next.
 7. On the Specify permissions to control access page, click Customize permissions.
@@ -190,7 +190,7 @@
 ### Шаг 2: Создание NFS share на основе хранилища iSCSI
 1. On LON-SVR2, in the SHARES area, click TASKS, and then click New Share.
 2. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click NFS Share – Quick, and then click Next.
-3. On the Select the server and path for this share page, click LON-SVR1, click Select by volume, click K:, and then click Next.
+3. On the Select the server and path for this share page, click LON-SVR2, click Select by volume, click K:, and then click Next.
 4. On the Specify share name page, in the Share name box, type LinuxData, and then click Next.
 5. On the Specify authentication methods page, select Kerberos v5 authentication(Krb5), and then click Next.
 6. On the Specify the share permissions page, click Add.
@@ -221,7 +221,7 @@
     ```
     
 
-> Note: There are two entries for Adatum\Administrator. File Explorer creates one, and Notepad creates the other. If NewFile.txt is not included, it is because the file connection is maintained only for brief periods when you open the file initially or save it. If you do not see two entries, switch to LON-DC1, close Notepad, and then double-click NewFile.txt. Then, on LON-SVR1, repeat step 14.
+> Note: There are two entries for Adatum\Administrator. File Explorer creates one, and Notepad creates the other. If NewFile.txt is not included, it is because the file connection is maintained only for brief periods when you open the file initially or save it. If you do not see two entries, switch to LON-DC1, close Notepad, and then double-click NewFile.txt. Then, on LON-SVR2, repeat step 14.
 	
 15. Leave the Windows PowerShell prompt open for the next task.
 	
