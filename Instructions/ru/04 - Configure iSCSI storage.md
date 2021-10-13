@@ -198,25 +198,27 @@
 1. Укажите **Share name** - **Data**, нажмите кнопку **Next**
 1. Выберите опцию **Enable access-based enumeration**, нажмите кнопку **Next**
 1. Нажмите кнопку **Customize permissions**
-1. In the Advanced Security Settings for Data window, on the Permissions tab, нажмите кнопку Add.
-1. In the Permission Entry for Data window, click Select a principal, type Domain Users, and then click OK.
-1.   In the Basic permissions area, select the Modify check box, and then click OK.
-1.   In the Advanced Security Settings for Data window, click OK.
+1. В окне **Advanced Security Settings for Data** на закладке **Permissions** нажмите кнопку **Add**
+1. В окне **Permission Entry for Data** нажмите **Select a principal** введите **Domain Users**, нажмите кнопку **OK**
+1. В области **Basic permissions** выберите опцию **Modify** и нажмите кнопку **OK**
+1. В окне **Advanced Security Settings for Data** нажмите кнопку **OK**
 1. Нажмите кнопку **Next**
 1. Нажмите кнопку **Create**
 1. Нажмите кнопку **Close** после завершения
 	
 ### Шаг 3: Создание NFS share на основе хранилища iSCSI
-1. On LON-SVR2, in the SHARES area, click TASKS, and then click New Share.
-1. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click NFS Share – Quick, and then click Next.
-1. On the Select the server and path for this share page, click LON-SVR2, click Select by volume, click K:, and then click Next.
+
+1. На **LON-SVR2** в **Server Manager** в меню слева выберите **File and Storage Services** и затем **Shares**
+1. В **SHARES** нажмите **TASKS** и выберите **New Share**
+1. В **New Share Wizard** на странице **Select the profile** в **File share profile** нажмите **NFS Share – Quick** и затем **Next**
+1. Выберите **LON-SVR2**, выберите **Select by volume**, выберите **K:**, нажмите кнопку **Next**
 1. Укажите **Share name **- **LinuxData**
 1. Нажмите кнопку **Next**
-1. On the Specify authentication methods page, select Kerberos v5 authentication(Krb5), and then click Next.
-1. On the Specify the share permissions page, click Add.
-1. In the Add Permissions window, click All Machines.
-1. In the Share permissions box, select Read / Write, and then click Add.
-1. On the Specify the share permissions page, click Next.
+1. В окне **Specify authentication methods** выберите **Kerberos v5 authentication(Krb5)**, нажмите кнопку **Next**
+1. Нажмите кнопку **Add**
+1. Выберите **All Machines**
+1. Выберите **Read / Write**, нажмите кнопку **Add**
+1. Нажмите кнопку **Next**
 1. Нажмите кнопку **Next**
 1. Нажмите кнопку **Create**
 1. Нажмите кнопку **Close** после завершения
