@@ -32,7 +32,7 @@
 
 ## Задание 1: Настройка хранилища iSCSI
 
-### Сценарий лабораторной работы
+### Сценарий
 Вым необходимо развернуть хранилище с высокой доступностью на iSCSI с использованием MPIO. Имеется 2 независимых сетевых пути между файловым сервером и iSCSI target. Вы настроите MPIO для использования обоих путей с избыточностью на сетевом уровне.
 
 Основные шаги этого задания:
@@ -155,20 +155,22 @@
 1. Нажмите кнопку **Create** 
 1. Нажмите кнопку **Close** 
 
+1. В **Server Manager** выберите слева **File and Storage Services** и затем **Disks**
+1. Нажмите правой кнопкой мыши на втором диске со статусом **Offline**
+1. Выберите **Bring online**
+1. Нажмите кнопку **Yes**
+1. Нажмите правой кнопкой мыши на том же диске
+1. Выберите **New Volume**
+1. Нажмите кнопку **Next >** 2 раза
+1. Нажмите кнопку **OK**
+1. Нажмите кнопку **Next >** 
+1. Выберите букву диска **K**
+1. Укажите **Volume label - NFSShares**
+1. Нажмите кнопку **Next >** 
+1. Нажмите кнопку **Create** 
+1. Нажмите кнопку **Close** 
 
-1.   In Server Manager, in the right pane, right-click the remaining offline disk with a bus type of iSCSI, and then click Bring Online.
-14.   In the Bring Disk Online dialog box, to bring the disk online, click Yes.
-15.   Right-click the iSCSI disk that you brought online, and then click New Volume.
-16.   In the New Volume Wizard, on the Before you begin page, click Next.
-17.   On the Select the server and disk page, ensure that your iSCSI disk is selected, and then click Next.
-18.   In the Offline or Uninitialized Disk dialog box, to initialize the disk as a GPT disk, click OK.
-19.   On the Specify the size of the volume page, click Next to accept the default of using the entire disk size for the volume.
-20.   On the Assign to a drive letter or folder page, in the Drive letter list, select K, and then click Next.
-21.   On the Select file system settings page, in the File system box, select NTFS.
-22.   In the Volume label text box, type NFSShares, and then click Next.
-23.   On the Confirm selections page, to finish creating the volume, click Create.
-24.   After the volume is created, on the Completion page, click Close.
-25.   On the taskbar, click File Explorer, browse to This PC, and then verify that the SMBShares and NFSShares volumes are displayed.
+1. Откройте **File Explorer**, **This PC**, проверьте, что видны диски **SMBShares** и **NFSShares**
 	
 ## Задание 3: Настройка инфраструктуры сетевых папок
 
@@ -191,31 +193,32 @@
 1. На **LON-SVR2** в **Server Manager** в меню слева выберите **File and Storage Services** и затем **Shares**
 1. В **SHARES** нажмите **TASKS** и выберите **New Share**
 1. В **New Share Wizard** на странице **Select the profile** в **File share profile** нажмите **SMB Share – Quick** и затем **Next**
-1. On the Select the server and path for this share page, select LON-SVR2, click Select by volume, click J:, and then click Next.
-1. On the Specify share name page, in the Share name box, type Data, and then click Next.
-1. On the Configure share settings page, select the Enable access-based enumeration check box, and then click Next.
-1. On the Specify permissions to control access page, click Customize permissions.
-1. In the Advanced Security Settings for Data window, on the Permissions tab, click Add.
+1. Выберите **LON-SVR2**, выберите **Select by volume**, выберите **J:**, нажмите кнопку **Next**
+1. Укажите **Share name** - **Data**, нажмите кнопку **Next**
+1. Выберите Enable access-based enumeration check box, and then click Next.
+1. Нажмите кнопку **Customize permissions**
+1. In the Advanced Security Settings for Data window, on the Permissions tab, нажмите кнопку Add.
 1. In the Permission Entry for Data window, click Select a principal, type Domain Users, and then click OK.
 1.   In the Basic permissions area, select the Modify check box, and then click OK.
 1.   In the Advanced Security Settings for Data window, click OK.
-1.   On the Specify permissions to control access page, click Next.
-1.   On the Confirm selections page, click Create.
-1.   When the creation of the share is complete, click Close.
+1. Нажмите кнопку **Next**
+1. Нажмите кнопку **Create**
+1. Нажмите кнопку **Close** после завершения
 	
 ### Шаг 3: Создание NFS share на основе хранилища iSCSI
 1. On LON-SVR2, in the SHARES area, click TASKS, and then click New Share.
-2. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click NFS Share – Quick, and then click Next.
-3. On the Select the server and path for this share page, click LON-SVR2, click Select by volume, click K:, and then click Next.
-4. On the Specify share name page, in the Share name box, type LinuxData, and then click Next.
-5. On the Specify authentication methods page, select Kerberos v5 authentication(Krb5), and then click Next.
-6. On the Specify the share permissions page, click Add.
-7. In the Add Permissions window, click All Machines.
-8. In the Share permissions box, select Read / Write, and then click Add.
-9. On the Specify the share permissions page, click Next.
-10. On the Specify permissions to control access page, click Next.
-11. On the Confirm selections page, click Create.
-12. On the View results page, click Close.
+1. In the New Share Wizard, on the Select the profile for this share page, in the File share profile box, click NFS Share – Quick, and then click Next.
+1. On the Select the server and path for this share page, click LON-SVR2, click Select by volume, click K:, and then click Next.
+1. Укажите **Share name **- **LinuxData**
+1. Нажмите кнопку **Next**
+1. On the Specify authentication methods page, select Kerberos v5 authentication(Krb5), and then click Next.
+1. On the Specify the share permissions page, click Add.
+1. In the Add Permissions window, click All Machines.
+1. In the Share permissions box, select Read / Write, and then click Add.
+1. On the Specify the share permissions page, click Next.
+1. Нажмите кнопку **Next**
+1. Нажмите кнопку **Create**
+1. Нажмите кнопку **Close** после завершения
 	
 ### Шаг 4: Использование Windows PowerShell для просмотра информации об общих папках
 1. На **LON-DC1** откройте **File Explorer**
@@ -238,6 +241,8 @@
 > Внимание: Отображаются 2 строки для **Adatum\Administrator**. Они создаются программами **File Explorer** и **Notepad**. Если `NewFile.txt` не виден, то только потому, что запись проявляется короткое время при сохранении. Если вы не видите 2 записи, то на **LON-DC1** закройте **Notepad** и откройте `NewFile.txt`. Затем на **LON-SVR2** выполните те же **PowerShell** команды.
 	
 ### Шаг 5: Отключение устаревшей версии протокола SMB1
+> Важно: Протокол SMB версии 1 имеет критическую уязвимость, связаннцю с удаленным выполнением кода. Его рекомендуется отключать. При этом версии 2 и 3 работают без проблем. https://docs.microsoft.com/en-us/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3
+
 1. На **LON-SVR2** в **Windows PowerShell** введите следующую команду и нажмите **Enter**:
     ```powershell
     Set-SmbServerConfiguration -AuditSmb1Access $true
@@ -262,5 +267,7 @@
     ```    
 8. Закройте **Windows PowerShell**
 	
+### Завершение
+Выключите виртуальные машины **LON-SVR2** и **LON-SVR3**.
 
 > Результат: Вы создали 2 диска на удаленном сервере, подключили их через 2 разные сети к другому серверу c MPIO, а затем создали общие сетевые папки, используя протоколы SMB, NFS. В конце вы отключили старую уязвимую версию протокола SMB1.

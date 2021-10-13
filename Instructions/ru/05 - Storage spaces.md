@@ -88,11 +88,11 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
 7. On the Confirm selections page, click Create.
 8. On the View results page, wait until the task completes, and then click Close.
 
-### Шаг 2: Create a three-way mirrored virtual disk (need at least five physical disks)
-1. On LON-SVR4, in Server Manager, in the Storage Pools pane, click StoragePool1.
-2. In the VIRTUAL DISKS pane, click TASKS, and then, from the TASKS drop-down list, click New Virtual Disk.
-3. In the Select the storage pool dialog box, click StoragePool1, and then click OK.
-4. In the New Virtual Disk Wizard, on the Before you begin page, click Next.
+### Шаг 2: Создание three-way mirrored virtual disk (требуется минимум 5 дисков)
+1. На **LON-SVR4** в **Server Manager** на панели **Storage Pools** нажмите на **StoragePool1**
+2. На панели **VIRTUAL DISKS** нажмите **TASKS** затем выберите **New Virtual Disk**
+3. В диалоговом окне выберите **StoragePool1** и нажмите кнопку **OK**
+4. Нажмите кнопку **Next**
 5. On the Specify the virtual disk name page, in the Name text box, type Mirrored Disk, and then click Next.
 6. On the Specify enclosure resiliency page, click Next.
 7. On the Select the storage layout page, in the Layout list, click Mirror, and then click Next.
