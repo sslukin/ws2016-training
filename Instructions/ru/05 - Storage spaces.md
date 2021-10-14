@@ -77,11 +77,10 @@
 Adatum Corporation has purchased a number of hard disk drives and SSDs and you have been tasked with creating a storage solution that can utilize these new devices to the fullest. With mixed requirements in Adatum for data access and redundancy, you must ensure that you have a redundancy solution for critical data that does not require fast disk read and write access. You also must create a solution for data that does require fast read and write access.
 You decide to use Storage Spaces and storage tiering to meet the requirements.
 
-## Задание 1: Creating a Storage Space
-### Шаг 1: Create a storage pool from six disks that are attached to the server
+## Задание 1: Создание Storage Space
+### Шаг 1: Создание storage pool из шести дисков, подключенных к серверу
 1. На **LON-SVR4** нажмите кнопку **Start**, запустите **Server Manager**
-1. 
-1. В Server Manager в панели слева нажмите **File and Storage Services**, затем в панели **Servers** нажмите **Storage Pools**
+1. В **Server Manager** в панели слева нажмите **File and Storage Services**, затем в панели **Servers** нажмите **Storage Pools**
 1. В панеле **STORAGE POOLS** нажмите **TASKS**, затем в **TASKS** выберите **New Storage Pool**
 1. Нажмите кнопку **Next**
 1. Введите **Name - StoragePool1**, нажмите кнопку **Next**
@@ -123,77 +122,77 @@ You decide to use Storage Spaces and storage tiering to meet the requirements.
     Copy C:\windows\system32\write.exe H:\
     ```
 1. Закройте **Command Prompt**
-1. Откройте **File Explorer **
+1. Откройте **File Explorer**
 1. В **File Explorer** в навигации слева выберите **Mirrored Volume (H:)**
 1. Проверьте, что файл `write.exe` виден в списке файлов
 1. Закройте **File Explorer**
 
-### Шаг 4: Remove a physical drive to simulate drive failure
-1. On the host computer, open Hyper-V Manager.
-1. In the Virtual Machines pane, right-click LON-SVR4, затем нажмите кнопку Settings.
-1. In Settings for LON-SVR4, in the Hardware pane, click the hard drive that begins with LON-SVR4-Disk1.
-1. In the Hard Drive pane, click Remove, click OK, затем нажмите кнопку Continue.
+### Шаг 4: Отключение физического диска для симуляции аварийной ситуации
+1. На машине **HOST** откройте **Hyper-V Manager**
+1. В панеле **Virtual Machines** щелкните правой кнопкой мыши на **LON-SVR4**, затем нажмите кнопку **Settings**
+1. В настройках **LON-SVR4** в панеле **Hardware** выберите диск **LON-SVR4-Disk1**
+1. На панеле **Hard Drive** нажмите кнопку **Remove**, затем нажмите кнопку **OK**, затем нажмите кнопку **Continue**
 
-### Шаг 5: Verify that the file is still available
-1. Switch to LON-SVR4.
-1. On the taskbar, click the File Explorer icon.
-1. In the File Explorer window, in the navigation pane, click Mirrored Volume (H:). 
-1. In the file list pane, verify that write.exe is still available.
-1. Close File Explorer.
-1. In Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
+### Шаг 5: Проверьте, что файл все еще доступен
+1. Переключитесь на машину LON-SVR4
+1. Откройте **File Explorer**
+1. В **File Explorer** в навигации слева выберите **Mirrored Volume (H:)**
+1. Проверьте, что файл `write.exe` виден в списке файлов
+1. Закройте **File Explorer**
+1. В **Server Manager**, в панеле **STORAGE POOLS** в меню нажмите **Refresh “Storage Pools”**
 
-Note: Notice the warning that is visible next to Mirrored Disk.
+> Внимание: Обратите внимание на предупреждение рядом с **Mirrored Disk**
 
-1. In the VIRTUAL DISK pane, right-click Mirrored Disk, затем нажмите кнопку Properties.
-1. In the Mirrored Disk Properties dialog box, in the left pane, click Health. 
+1. На панеле **VIRTUAL DISK** щелкните правой кнопкой мыши **Mirrored Disk**, затем нажмите кнопку **Properties**
+1. В диалоговом окне **Mirrored Disk Properties** в панеле слева нажмите **Health**
 
-> Note: Notice that the Health Status indicates a warning. The Operational Status should indicate one or more of the following: Incomplete, Unknown, or Degraded.
+> Внимание: Обратите внимание на предупреждение **Health Status**. **Operational Status** должен показывать одно из значений: **Incomplete**, **Unknown** или **Degraded**
 
-1. In the Mirrored Disk Properties dialog box, click OK.
+1. Нажмите кнопку **OK**
 
-### Шаг 6: Add a new disk to the storage pool and remove the broken disk
-1. On LON-SVR4, in Server Manager, in the STORAGE POOLS pane, on the menu bar, click Refresh “Storage Pools”. 
-1. In the STORAGE POOLS pane, right-click StoragePool1, затем нажмите кнопку Add Physical Disk.
-1. In the Add Physical Disk window, click the first disk in the list, затем нажмите кнопку OK.
-1. Right-click Start, затем нажмите кнопку Windows PowerShell (Admin).
-1. In Windows PowerShell, type the following command, and then press Enter:
+### Шаг 6: Добавьте новый диск к storage pool и удалите сломанный диск
+1. На **LON-SVR4** в Server Manager на панеле **STORAGE POOLS** в меню нажмите **Refresh “Storage Pools”**
+1. На панеле **STORAGE POOLS** щелкните правой кнопкой мыши **StoragePool1**, затем нажмите кнопку **Add Physical Disk**
+1. В окне **Add Physical Disk** нажмите на первый диск в списке, затем нажмите кнопку **OK**.
+1. Щелкните правой кнопкой мыши на кнопку **Start**, затем нажмите кнопку **Windows PowerShell (Admin)**
+1. В **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Get-PhysicalDisk
     ```
   
-1. Note the FriendlyName for the disk that shows an OperationalStatus of Lost Communication. 
-1. In Windows PowerShell, type the following command, and then press Enter:
+1. Обратите внимание на **FriendlyName** диска, который показывает **OperationalStatus** как **Lost Communication**
+1. В **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
+    > Замените `diskname` на имя диска из предыдущего шага
     ```powershell
-    $Disk = Get-PhysicalDisk -FriendlyName ‘diskname’
+    $Disk = Get-PhysicalDisk -FriendlyName 'diskname'
     ```
   
-  Replace diskname with the name of the disk that you noted in Step 6.
-1. In Windows PowerShell, type the following command, and then press Enter:
+1. В **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Remove-PhysicalDisk -PhysicalDisks $disk -StoragePoolFriendlyName StoragePool1
     ```
   
-1. In Windows PowerShell, type Y, and then press Enter.
-1. In Server Manager, in the STORAGE POOLS pane, on the menu bar, click the Refresh “Storage Pools” button to see the warnings disappear.
+1. Введите **Y** и нажмите клавишу **Enter**:
+1. В **Server Manager** на панеле **STORAGE POOLS** в меню нажмите **Refresh “Storage Pools”** чтобы увидеть, что предупреждение исчезло
 
-## Задание 2: Enabling and configuring storage tiering
-### Шаг 1: Use the Get-PhysicalDisk cmdlet to view all available disks on the system
-1. On LON-SVR4, right-click Start, затем нажмите кнопку Windows PowerShell (Admin).
-1. In Windows PowerShell, type the following command, and then press Enter:  
+## Задание 2: Включение и настройка storage tiering
+### Шаг 1: Использование команды Get-PhysicalDisk для просмотра доступных физических дисков
+1. На **LON-SVR4** нажмите правой кнопкой мыши на **Start**, затем нажмите **Windows PowerShell (Admin)**
+1. В **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     Get-PhysicalDisk
     ```
   
 ### Шаг 2: Создание storage pool
-1. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
+1. В **Windows PowerShell** выполните следующую команду и нажмите клавишу **Enter**:
     ```powershell
     $canpool = Get-PhysicalDisk –CanPool $true
     ```
-2. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
+1. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
     ```powershell
     New-StoragePool -FriendlyName "TieredStoragePool" -StorageSubsystemFriendlyName "Windows Storage*" -PhysicalDisks $canpool
     ```
-3. В **Windows PowerShell** введите команды и нажмите клавишу **Enter**:
+1. В **Windows PowerShell** введите команды и нажмите клавишу **Enter**:
     > Этот скрипт настраивает имена дисков для последующих шагов задания
     ```powershell
     $i = 1
@@ -228,43 +227,47 @@ Note: Notice the warning that is visible next to Mirrored Disk.
   
 ### Шаг 6: Создайте новый виртуальный диск с уровнями хранения с использованием New Virtual Disk Wizard
 1. На **LON-SVR4** в **Server Manager** на панели **Storage Pools** нажмите кнопку **Refresh**, затем нажмите кнопку **TieredStoragePool**
-2. На панели **VIRTUAL DISKS** нажмите **TASKS**, затем в списке **TASKS** выберите **New Virtual Disk**
-3. In the Select the storage pool dialog, click TieredStoragePool, затем нажмите кнопку OK.
-4. In the New Virtual Disk Wizard, on the Before you begin page, click Next.
-5. On the Specify the virtual disk name page, in the Name text box, type TieredVirtDisk, select Create storage tiers on this virtual disk, затем нажмите кнопку Next.
-6. On the Specify enclosure resiliency page, click Next.
-7. On the Select the storage layout page, in both the Layout lists, click Simple, затем нажмите кнопку Next.
-8. On the Specify the provisioning type page, click Next.
-9. On the Specify the size of the virtual disk page, in both the Specify size text boxes, type 2, clear the Enable read cache check box, затем нажмите кнопку Next.
+1. На панели **VIRTUAL DISKS** нажмите **TASKS**, затем в списке **TASKS** выберите **New Virtual Disk**
+1. Выберите **TieredStoragePool**, затем нажмите кнопку **OK**
+1. Нажмите кнопку **Next**
+1. Укажите **Name - TieredVirtDisk**, выберите **Create storage tiers on this virtual disk**, затем нажмите кнопку **Next**
+1. Нажмите кнопку **Next**
+1. В обоих списках **Layout** выберите **Simple**, затем нажмите кнопку **Next**
+1. Нажмите кнопку **Next**
+1. В обоих вариантах **Specify size** введите **2**, снимите опцию **Enable read cache**, затем нажмите кнопку **Next**
 
-> Note: Based on your storage subsystem, the Enable read cache check box may not be present.
+> Внимание: В зависимости от вашей подсистемы хранения опция Enable read cache может быть недоступна.
 
-10. On the Confirm selections page, click Create.
-11. On the View results page, wait until the task completes. 
-12. Ensure that Create a volume when this wizard closes is selected, затем нажмите кнопку Close.
-13. In the New Volume Wizard, on the Before you begin page, click Next.
-14. On the Select the server and disk page, in the Disk pane, click the TieredVirtDisk virtual disk, затем нажмите кнопку Next.
-15. On the Specify the size of the volume page, click Next to confirm the default selection.
-16. On the Assign to a drive letter or folder page, in the Drive letter drop-down list, ensure that R is selected, затем нажмите кнопку Next.
-17. On the Select file system settings page, in the File system drop-down list, click ReFS. In the Volume label text box, type Tiered Volume, затем нажмите кнопку Next.
+1. Нажмите кнопку **Create**
+1. Дождитесь завершения 
+1. Убедитесь, что выбрана опция **Create a volume when this wizard closes**, затем нажмите кнопку **Close**
+1. Нажмите кнопку **Next**
+1. На странице **Select the server and disk**, в панеле **Disk**, выберите **TieredVirtDisk**, затем нажмите кнопку **Next**
+1. Нажмите кнопку Next
+1. Выберите букву диска **R**, затем нажмите кнопку **Next**
+1. Выберите файловую систему **ReFS**. Укажите **Volume label - Tiered Volume**, затем нажмите кнопку **Next**
 
-> Note: If ReFS is not available from the file system drop-down menu, select NTFS.
+> Внимание: Если ReFS недоступна, выберите NTFS.
 
-18. On the Confirm selections page, click Create. 
-19. On the Completion page, wait until the creation completes, затем нажмите кнопку Close.
-20. In Server Manager, right-click the virtual disk you just created, затем нажмите кнопку Properties.
-21. In the TieredVirtDisk Properties window, on the General tab, observe the Storage tiers, Capacity, Allocated space, and Used pool space details. 
-22. Click the Health tab, and observe the Storage layout details, затем нажмите кнопку OK.
+1. Нажмите кнопку **Create**
+1. Дождитесь завершения операции
+1. Нажмите кнопку **Close**
+1. В **Server Manager**, щелкните правой кнопкой по созданному только что диску, затем нажмите кнопку **Properties**
+1. В окне **TieredVirtDisk Properties**, на закладке **General**, посмотрите на **Storage tiers**, **Capacity**, **Allocated space**, и **Used pool space**
+1. Перейдите на закладку **Health**, посмотрите на детали **Storage layout**, затем нажмите кнопку **OK**
 
 
-# Lab B: Implementing Data Deduplication
+# Лабораторная работа B: Внедрение Data Deduplication - !!! Не готова !!!
 
-Scenario
+## Сценарий оабораторной работы
 After you have tested the storage redundancy and performance options, you decide that it also would be beneficial to maximize the available disk space that you have, especially on generic file servers. You decide to test Data Deduplication solutions to maximize storage availability for users.
 New: After you have tested the storage redundancy and performance options, you now decide that it would also be beneficial to maximize the available disk space that you have, especially around virtual machine storage which is in ever increasing demand. You decide to test out Data Deduplication solutions to maximize storage availability for virtual machines.
 
-## Задание 1: Installing Data Deduplication
-### Шаг 1: Install the Data Deduplication role service
+## Подготовка
+> Перед выполнением заданий вам неободимо при помощи **Disk Management** инициализировать один из доступных дисков, создать на нем том, отформатировать его при помощи **ReFS**, назначить диску букву `D`. Далее необходимо разархивировать в корень `D:\` архив `C:\labs\lab05\dfiles.zip`
+
+## Задание 1: Установка Data Deduplication
+### Шаг 1: Установка роли сервера Data Deduplication
 1. On LON-SVR4, in Server Manager, in the navigation pane, click Dashboard.
 2. In the details pane, click Add roles and features.
 3. In the Add Roles and Features Wizard, on the Before you begin page, click Next.
@@ -277,15 +280,21 @@ New: After you have tested the storage redundancy and performance options, you n
 10. On the Confirm installation selections page, click Install. 
 11. When installation is complete, on the Installation progress page, click Close.
 
-### Шаг 2: Check the status of Data Deduplication
+### Шаг 2: Проверка статуса Data Deduplication
 1. On LON-SVR4, switch to Windows PowerShell.
-2. In the Windows PowerShell command prompt window, type the following command, and then press Enter:
-  Get-DedupVolume 
-3. In the Windows PowerShell command prompt window, type the following command, and then press Enter:
-  Get-DedupStatus 
-4. These commands return no results. This is because you need to enable it on the volume after installing it.
+1. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
+    ```powershell
+    Get-DedupVolume 
+    ```
+  
+1. В **Windows PowerShell** введите команду и нажмите клавишу **Enter**:
+    ```powershell
+    Get-DedupStatus 
+    ```
+  
+1. These commands return no results. This is because you need to enable it on the volume after installing it.
 
-### Шаг 3: Verify the virtual machine performance
+### Шаг 3: Проверка производительности виртуальной машины
 1. On LON-SRV1, in the Windows PowerShell window, type the following, and then press Enter:
     ```powershell
     Measure-Command -Expression {Get-ChildItem –Path D:\ -Recurse}
@@ -293,8 +302,8 @@ New: After you have tested the storage redundancy and performance options, you n
 
 > Note: You will use the values returned from the previous command later in the lab.
 
-## Задание 2: Configuring Data Deduplication
-### Шаг 1: Configure Data Deduplication
+## Задание 2: Настройка Data Deduplication
+### Шаг 1: Настройка Data Deduplication
 1. On LON-SVR4, on the taskbar, click the File Explorer icon.
 2. In Server Manager, in the navigation pane, click File and Storage Services, затем нажмите кнопку Disks.
 3. In the Disks pane, click 1.
